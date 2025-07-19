@@ -1,0 +1,21 @@
+numero,fechaEmision,total,clienteId,descripcion
+FACT-001,2025-07-19,1500.50,1,Factura de servicios profesionales
+FACT-002,2025-07-18,2350.75,2,Consultoría en desarrollo de software
+FACT-003,2025-07-17,890.25,1,Mantenimiento de sistemas
+FACT-004,2025-07-16,4200.00,3,Implementación de base de datos
+FACT-005,2025-07-15,1750.80,4,Diseño de arquitectura de software
+FACT-006,2025-07-14,3100.45,2,Auditoría de seguridad informática
+FACT-007,2025-07-13,950.60,5,Capacitación técnica
+FACT-008,2025-07-12,2800.30,3,Migración de servidores
+FACT-009,2025-07-11,1200.90,6,Soporte técnico especializado
+FACT-010,2025-07-10,5500.00,1,Desarrollo de aplicación web
+FACT-011,2025-07-09,675.25,7,Instalación de software
+FACT-012,2025-07-08,3750.80,4,Integración de APIs
+FACT-013,2025-07-07,1950.40,8,Optimización de rendimiento
+FACT-014,2025-07-06,2250.65,5,Backup y recuperación de datos
+FACT-015,2025-07-05,1400.20,9,Monitoreo de infraestructura
+FACT-016,2025-07-04,3200.15,2,Desarrollo de módulos personalizados
+FACT-017,2025-07-03,850.75,10,Configuración de servidores
+FACT-018,2025-07-02,4100.50,6,Implementación de CI/CD
+FACT-019,2025-07-01,1650.90,3,Análisis de requisitos
+FACT-020,2025-06-30,2900.35,7,Testing y validación de software
