@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: micro-log
+    tier: backend
+  name: micro-log
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: micro-log
+  template:
+    metadata:
+      labels:
+        app: micro-log
+    spec:
+      containers:
+      - name: micro-log   
+        image: mauron/micro-log:1
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+            requests:
+              memory: "200Mi"
+              cpu: "200m"
+            limits:
+              memory: "300Mi"
+              cpu: "400m"  
+       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: micro-log
+  name: micro-log
+spec:
+  type: ClusterIP
+  selector:
+    app: micro-log
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+

@@ -4,6 +4,7 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
 
 	<springProperty name="appname" source="spring.application.name" />
+	<springProperty name="logstash" source="logstash.server" />
 
 
 	<appender name="NORMAL" class="ch.qos.logback.core.ConsoleAppender">
@@ -19,6 +20,15 @@
 			<customFields>{"appname": "${appname}"}</customFields>
 		</encoder>
 	</appender>
+
+	 <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+		<destination>${logstash}</destination>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<includeCallerData>true</includeCallerData>
+			<customFields>{"appname": "${appname}"}</customFields>
+		</encoder>
+	</appender>
+
 
 		
 	<root level="INFO"> 
