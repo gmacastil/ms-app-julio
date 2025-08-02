@@ -1,0 +1,24 @@
+services:
+  factura2:
+    image: mauron/factura:v4
+    container_name: factura2
+    restart: unless-stopped
+    ports:
+      - "8084:8082"
+    environment:
+      - DATABASE_URL=jdbc:postgresql://postgres-db:5432/postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=123456
+      - JAVA_OPTS=-Xms256m -Xmx512m
+      - SERVER_PORT=8082
+
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: postgres
+
+  
