@@ -19,3 +19,8 @@ mvn clean verify sonar:sonar \
   -Dsonar.host.url=http://localhost:9000 \
   -Dsonar.login=squ_4f6dcdb4bd7766b0c72d40c25809fe75477d2aad \
   -DskipTests
+
+# Build images
+
+$ docker build . -t factura:v3
+
