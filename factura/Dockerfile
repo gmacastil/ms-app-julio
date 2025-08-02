@@ -4,6 +4,7 @@ WORKDIR /curso
 
 COPY target/*.jar curso.jar
 
-ENV SERVER_PORT=8080
+#ENV SERVER_PORT=8080
+ENV JAVA_OPTS=""
 
-ENTRYPOINT ["java", "-jar", "curso.jar"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar curso.jar"]

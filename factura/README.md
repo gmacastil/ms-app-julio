@@ -38,3 +38,4 @@ $ docker run --name factura2  \
   factura:v4
 
 $ docker compose up -d
+
