@@ -1,7 +1,7 @@
 services:
-  factura2:
-    image: factura:v5
-    container_name: factura2
+  factura:
+    image: factura:v6
+    container_name: factura
     restart: unless-stopped
     ports:
       - "8084:8082"

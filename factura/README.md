@@ -22,7 +22,9 @@ mvn clean verify sonar:sonar \
 
 # Build images
 
-$ docker build . -t factura:v4
+$ docker build . -t factura:v6
+$ docker tag factura:v6 mauron/factura:v6
+$ docker push mauron/factura:v6
 
 # Run container
 
