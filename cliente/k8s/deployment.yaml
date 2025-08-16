@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: factura
+  name: cliente
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: factura
+      app: cliente
   template:
     metadata:
       labels:
-        app: factura
+        app: cliente
     spec:
       containers:
-        - name: factura
-          image: mauron/factura:v6
+        - name: cliente
+          image: mauron/cliente:v1
           ports:
             - containerPort: 8080
           envFrom:
-            - configMapRef:
-                name: app-config
-            - secretRef:
-                name: app-secrets
+          - configMapRef:
+              name: app-config
+          - secretRef:
+              name: app-secrets
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: factura
+  name: cliente
 spec:
   selector:
-    app: factura
+    app: cliente
   ports:
     - protocol: TCP
       port: 8085

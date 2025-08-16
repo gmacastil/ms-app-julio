@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  labels:
+    app: cliente
+data:
+  DATABASE_URL: "jdbc:postgresql://postgres.datos:5432/postgres"
+  DATABASE_USERNAME: "postgres"
+  JAVA_OPTS: "-Xms256m -Xmx512m"
+  LOGSTASH_SERVER: "logstash:5000"
+  TZ: "America/Bogota"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+  labels:
+    app: cliente
+type: Opaque
+data:
+  DATABASE_PASSWORD: MTIzNDU2

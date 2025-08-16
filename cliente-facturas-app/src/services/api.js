@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8081';
+const API_URL = 'http://url-api-gw:8081';
 
 export const clienteService = {
   getAllClientes: () => axios.get(`${API_URL}/api/clientes`),
