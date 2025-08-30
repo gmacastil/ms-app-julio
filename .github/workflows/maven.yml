@@ -29,6 +29,15 @@ jobs:
           cd factura
           mvn clean package -DskipTests
           ls -al target
+    
+    - name: Check sonarqube
+      run: |
+          mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=factura \
+          -Dsonar.host.url=http://localhost:9001 \
+          -Dsonar.login=squ_9b52bbea7dbdbcc24402bcc4a42a30a750fe8766 \
+          -DskipTests
+
 
     - name: Build docker images
       run: |
