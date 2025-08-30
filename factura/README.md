@@ -41,3 +41,8 @@ $ docker run --name factura2  \
 
 $ docker compose up -d
 
+# Run k8s
+
+## Conectarse al cluster
+
+$ kubectl apply -f k8s/

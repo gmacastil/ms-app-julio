@@ -22,6 +22,25 @@ spec:
               name: app-config
           - secretRef:
               name: app-secrets
+      resources:
+        limits:
+          cpu: 500m
+          memory: 512Mi
+        requests:
+          cpu: 250m
+          memory: 256Mi
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        initialDelaySeconds: 11
+        periodSeconds: 10
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        initialDelaySeconds: 20
+        periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -35,3 +54,45 @@ spec:
       port: 8085
       targetPort: 8080
   type: LoadBalancer
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  labels:
+    app: cliente
+data:
+  DATABASE_URL: "jdbc:postgresql://postgres.datos:5432/postgres"
+  DATABASE_USERNAME: "postgres"
+  JAVA_OPTS: "-Xms256m -Xmx512m"
+  LOGSTASH_SERVER: "logstash:5000"
+  TZ: "America/Bogota"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+  labels:
+    app: cliente
+type: Opaque
+data:
+  DATABASE_PASSWORD: MTIzNDU2
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cliente
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cliente
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80

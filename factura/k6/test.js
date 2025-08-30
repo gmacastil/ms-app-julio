@@ -27,7 +27,7 @@ export default function () {
   };
   
   // Realizar la petición GET
-  const response = http.get(`http://localhost:8082/api/facturas/${facturaId}`, params);
+  const response = http.get(`http://localhost:8085/api/facturas/${facturaId}`, params);
   
   // Verificaciones
   check(response, {
