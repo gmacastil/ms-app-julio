@@ -32,6 +32,7 @@ jobs:
     
     - name: Check sonarqube
       run: |
+          cd factura
           mvn clean verify sonar:sonar \
           -Dsonar.projectKey=factura \
           -Dsonar.host.url=http://localhost:9001 \
@@ -51,4 +52,19 @@ jobs:
       run: |
         docker tag ms-factura:${{ github.run_number }} mauron/factura:${{ github.run_number }}
         docker push mauron/factura:${{ github.run_number }}
+
+  cd:
+
+    runs-on: mipc
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Deploy kubernetes
+      run: |
+       cd factura/k8s
+       kubectl apply -f k8s/deployment.yaml
+       kubectl apply -f k8s/service.yaml
+
 
