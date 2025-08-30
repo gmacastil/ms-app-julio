@@ -63,10 +63,15 @@ jobs:
 
     - uses: actions/checkout@v4
 
+    - name: Ajustar tag de la imagen
+      run: |
+        cd factura/k8s
+        sed -i 's|image: .*|image: mauron/factura:${{ github.run_number }}|' deployment.yaml
+
     - name: Deploy kubernetes
       run: |
        cd factura/k8s
-       kubectl apply -f k8s/deployment.yaml
-       kubectl apply -f k8s/service.yaml
+       kubectl apply -f . -n apps
+
 
 
